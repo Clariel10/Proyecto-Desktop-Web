@@ -21,7 +21,7 @@ public class Detalle_Ticket {
     private double costo;
     private Time hora_inicial;
     private Time hora_final;
-    private Time estadia;
+    private int estadia;
     private int estado;
     
 }
