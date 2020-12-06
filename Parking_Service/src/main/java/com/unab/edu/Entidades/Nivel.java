@@ -6,13 +6,15 @@
 package com.unab.edu.Entidades;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  *
  * @author DELL
  */
 @Data
-public class Nivel {
+@EqualsAndHashCode(callSuper=false)
+public class Nivel extends Parking{
     
     private int id_nivel;
     private int capacidad;

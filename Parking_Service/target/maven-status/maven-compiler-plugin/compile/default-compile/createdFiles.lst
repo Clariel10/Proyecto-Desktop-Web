@@ -1,4 +1,5 @@
 com\unab\edu\Entidades\Detalle_Ticket.class
+com\unab\edu\clase1\parking_service\frmIngresoAutos.class
 com\unab\edu\DAO\ClsEstacionamiento.class
 com\unab\edu\DAO\ClsParking.class
 com\unab\edu\Entidades\Estado.class
@@ -11,7 +12,10 @@ com\unab\edu\Entidades\Parking.class
 com\unab\edu\DAO\ClsNivel.class
 com\unab\edu\Entidades\Estacionamiento.class
 com\unab\edu\DAO\ClsTicket.class
+com\unab\edu\clase1\parking_service\FrmIngresarAuto$2.class
+com\unab\edu\clase1\parking_service\frmIngresarNivel.class
 com\unab\edu\Conexionmysql\ConexionBD.class
+com\unab\edu\clase1\parking_service\FrmIngresarAuto$3.class
 com\unab\edu\Entidades\Nivel.class
 com\unab\edu\Entidades\Ticket.class
 com\unab\edu\DAO\ClsDetalleTicket.class

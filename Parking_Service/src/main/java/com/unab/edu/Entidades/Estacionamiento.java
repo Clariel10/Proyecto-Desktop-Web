@@ -17,4 +17,5 @@ public class Estacionamiento {
     private int id_estacionamiento;
     private int estado;
     private int id_nivel;
+    private int id_parqueo;
 }

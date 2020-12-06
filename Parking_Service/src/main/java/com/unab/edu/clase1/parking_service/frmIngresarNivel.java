@@ -5,6 +5,15 @@
  */
 package com.unab.edu.clase1.parking_service;
 
+import com.unab.edu.DAO.ClsNivel;
+import com.unab.edu.DAO.ClsParking;
+import com.unab.edu.Entidades.Nivel;
+import com.unab.edu.Entidades.Parking;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DELL
@@ -16,6 +25,62 @@ public class frmIngresarNivel extends javax.swing.JPanel {
      */
     public frmIngresarNivel() {
         initComponents();
+        MostrarTabla();
+    }
+    
+    void MostrarTabla ()
+    {
+    
+        String TITULOS [] = {"ID NIVEL","CAPACIDAD","ID PARKING","ESTADO"};
+        DefaultTableModel ModeloTabla = new DefaultTableModel(null, TITULOS);
+        ClsNivel claseNivel = new ClsNivel();
+        ArrayList <Nivel> Niveles =  claseNivel.MostrarNiveles();
+        String filas [] = new String [5];
+        for (var IterarDatos : Niveles){
+        
+        filas[0] = String.valueOf(IterarDatos.getId_nivel());
+        filas[1] = String.valueOf(IterarDatos.getCapacidad());
+        filas[2] = String.valueOf(IterarDatos.getId_parking());
+        filas[3] = String.valueOf(IterarDatos.getEstado());
+        
+        
+        ModeloTabla.addRow(filas);
+            
+        }
+    
+        tbNiveles.setModel(ModeloTabla);
+    }
+    
+   
+    
+    void Limpiar (){
+        
+      txtId.setText("");
+      txtCapacidad1.setText("");
+      txtIdParkingActual.setText("");      
+        
+    }
+    
+    String Valuemember[];
+    int contador = 0;
+    
+    void DisplayMember(){
+        
+        DefaultComboBoxModel cbdefault = new DefaultComboBoxModel();
+        ClsParking claseParking = new ClsParking();
+        ArrayList<Parking> Parkings = claseParking.MostrarParkings();
+        Valuemember = new String [Parkings.size()];
+        String Filas[] = new String[5];
+        for (var iterarDatos : Parkings){
+            Filas[0] = String.valueOf(iterarDatos.getId_parking());
+            Filas[1] = iterarDatos.getUbicacion();
+            Valuemember [contador] = Filas[0];
+            cbdefault.addElement(Filas[1]);
+            contador++;
+                        
+        }
+      
+        cmbParking.setModel(cbdefault);
     }
 
     /**
@@ -27,19 +92,301 @@ public class frmIngresarNivel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPasswordField1 = new javax.swing.JPasswordField();
+        tbp_mostrar = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        txtIdParkingActual = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtCapacidad1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cmbParking = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbNiveles = new javax.swing.JTable();
+
+        jPasswordField1.setText("jPasswordField1");
+
+        btnGuardar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        txtIdParkingActual.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtIdParkingActual.setEnabled(false);
+
+        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel3.setText("Capacidad");
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel5.setText("Parking");
+
+        txtCapacidad1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel6.setText("Numero");
+
+        txtId.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtId.setEnabled(false);
+
+        btnEliminar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel7.setText("Cambiar");
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel8.setText("Actual:");
+
+        cmbParking.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        cmbParking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        jLabel1.setText("CRUD NIVELES");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(28, 28, 28)
+                                .addComponent(cmbParking, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(40, 40, 40)
+                                .addComponent(txtIdParkingActual, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(txtCapacidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(232, 232, 232))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(318, 318, 318)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(61, 61, 61)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCapacidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(54, 54, 54)
+                .addComponent(jLabel5)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdParkingActual, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cmbParking, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(89, 89, 89))
+        );
+
+        tbp_mostrar.addTab("Opciones Avanzadas", jPanel2);
+
+        tbNiveles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbNiveles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbNivelesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbNiveles);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+
+        tbp_mostrar.addTab("Mostrar Niveles", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(tbp_mostrar)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(tbp_mostrar)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbNivelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNivelesMouseClicked
+        tbp_mostrar.setSelectedIndex(tbp_mostrar.indexOfComponent(jPanel2));
+
+        int fila = tbNiveles.getSelectedRow();
+
+        String ID = String.valueOf(tbNiveles.getValueAt(fila, 0)); 
+        String Capacidad = String.valueOf(tbNiveles.getValueAt(fila, 1)); 
+        String IdParking = String.valueOf(tbNiveles.getValueAt(fila, 2)); 
+        
+        txtId.setText(ID);
+        txtCapacidad1.setText(Capacidad);
+        txtIdParkingActual.setText(IdParking);
+    }//GEN-LAST:event_tbNivelesMouseClicked
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if (txtId.getText().equals("")) {
+            if (txtCapacidad1.getText() != "" ) {
+
+                ClsNivel Niveles = new ClsNivel();
+                Nivel Nivel = new Nivel();
+                Nivel.setCapacidad(Integer.parseInt(txtCapacidad1.getText()));
+                Nivel.setId_parking(Integer.parseInt(Valuemember[cmbParking.getSelectedIndex()]));
+                Niveles.GuardarNivel(Nivel);
+                MostrarTabla();
+                Limpiar();
+                
+            } else {
+
+                JOptionPane.showMessageDialog(null, "Hay campos Vacios");
+            }
+        }
+        else if (txtId.getText() != ""){
+            
+            if (txtCapacidad1.getText() != "" ) {
+           
+                ClsNivel Niveles = new ClsNivel();
+                Nivel Nivel = new Nivel();
+                Nivel.setId_nivel(Integer.parseInt(txtId.getText()));
+                Nivel.setCapacidad(Integer.parseInt(txtCapacidad1.getText()));
+                Nivel.setId_parking(Integer.parseInt(Valuemember[cmbParking.getSelectedIndex()]));
+                Niveles.ActualiarNivel(Nivel);
+                MostrarTabla();
+                Limpiar();
+           }
+        else{
+            
+            JOptionPane.showMessageDialog(null, "Hay campos Vacios");
+        }
+            
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (txtCapacidad1.getText() != ""  && txtId.getText() != "") {
+                
+             ClsNivel Niveles = new ClsNivel();
+                Nivel Nivel = new Nivel();
+                Nivel.setId_nivel(Integer.parseInt(txtId.getText()));         
+                Niveles.EliminarNivel(Nivel);
+                MostrarTabla();
+                Limpiar();
+        }
+        else{
+            
+            JOptionPane.showMessageDialog(null, "Hay campos Vacios");
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Limpiar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JComboBox<String> cmbParking;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbNiveles;
+    private javax.swing.JTabbedPane tbp_mostrar;
+    private javax.swing.JTextField txtCapacidad1;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtIdParkingActual;
     // End of variables declaration//GEN-END:variables
 }

@@ -42,6 +42,21 @@ public class ClsEstacionamiento {
         return lista;
     }
     
+     public ArrayList<Estacionamiento> MostrarEstacionamientoEspecifico(Estacionamiento sal) {
+        ArrayList<Estacionamiento> lista = new ArrayList<>();
+        try {
+             CallableStatement call = conectar.prepareCall("call SP_S_EstacionamientoEspecifico(?)");
+            call.setInt("pid_parqueo", sal.getId_parqueo());                     
+            call.executeQuery();
+            conectar.close();
+            JOptionPane.showMessageDialog(null, "Cargando");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return lista;
+    }
+    
     
     public void GuardarEstacionamiento(Estacionamiento sal) {
         try {
